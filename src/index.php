@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="UTF-8">
-    <title>CODE WITH HOSSEIN</title>
+    <title>Café !</title>
     <!-- CSS File -->
     <link rel="stylesheet" href="css/style.css">
     <style>
@@ -23,6 +23,8 @@
             <span class="steam"></span>
             <div class="cup-handle"></div>
         </div>
+        <br> <br>
+        
         <div class="ip-hostname">
             <p>IP Address: <?php echo $_SERVER['SERVER_ADDR']; ?></p>
             <p>Pod: <?php echo gethostname(); ?></p>
