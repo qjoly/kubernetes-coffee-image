@@ -11,6 +11,9 @@
             text-align: center;
             margin-top: 20px;
         }
+        .ip-hostname { 
+	        font-family: Geneva,Tahoma,Verdana,sans-serif; 
+        }
     </style>
 </head>
 
