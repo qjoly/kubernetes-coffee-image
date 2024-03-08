@@ -52,5 +52,5 @@ jobs:
           context: ${{ matrix.context }}
           file: ${{ matrix.dockerfile }}
           push: ${{ github.event_name != 'pull_request' }}
-          tags: ghcr.io/${{ OWNER_LC }}/${{ github.repository }}:${{ matrix.tag }}
+          tags: ghcr.io/${OWNER_LC}/${{ github.repository }}:${{ matrix.tag }}
       
