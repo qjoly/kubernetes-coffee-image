@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: evil-tea-deployment
+  labels:
+    app: evil-tea
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: evil-tea
+  template:
+    metadata:
+      labels:
+        app: evil-tea
+    spec:
+      containers:
+      - name: evil-tea
+        image: qjoly/kubernetes-coffee-image:evil
+        ports:
+        - containerPort: 5000
