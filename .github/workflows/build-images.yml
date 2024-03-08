@@ -48,8 +48,8 @@ jobs:
       - name: debug
         run: echo $OWNER_LC
       - name: debug2
-        run: echo ${{ OWNER_LC }}
-        
+        run: echo ${{ env.OWNER_LC }}
+
       - name: Build and Push Docker Image
         uses: docker/build-push-action@v2
         with:
