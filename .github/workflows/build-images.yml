@@ -3,6 +3,9 @@ name: Build Docker Images
 on:
   push:
 
+env:
+  REGISTRY: ghcr.io
+
 jobs:
   build-image:
     name: Build Docker Image
