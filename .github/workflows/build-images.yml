@@ -40,15 +40,11 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v2
 
-      - name: set lower case owner name
+      - name: set repository name to lowercase
         run: |
-          echo "OWNER_LC=${OWNER,,}" >>${GITHUB_ENV}
+          echo "reponame=${reponame,,}" >>${GITHUB_ENV}
         env:
-          OWNER: '${{ github.repository_owner }}'
-      - name: debug
-        run: echo $OWNER_LC
-      - name: debug2
-        run: echo ${{ env.OWNER_LC }}
+          reponame: '${{ github.repository }}'
 
       - name: Build and Push Docker Image
         uses: docker/build-push-action@v2
@@ -56,5 +52,4 @@ jobs:
           context: ${{ matrix.context }}
           file: ${{ matrix.dockerfile }}
           push: ${{ github.event_name != 'pull_request' }}
-          tags: ghcr.io/qjoly/${{ github.repository }}:${{ matrix.tag }}
-      
+          tags: ghcr.io/${{ env.reponame }}:${{ matrix.tag }}
