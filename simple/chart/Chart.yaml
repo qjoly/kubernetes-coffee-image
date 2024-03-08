@@ -1,0 +1,6 @@
+apiVersion: v2
+name: simple-coffee
+description: "Don't you want a cup of coffee ? "
+type: application
+version: 0.1.0
+appVersion: "1.0.0"
