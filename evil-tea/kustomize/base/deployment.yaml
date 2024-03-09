@@ -16,6 +16,7 @@ spec:
     spec:
       containers:
       - name: evil-tea
+        imagePullPolicy: Always
         image: qjoly/kubernetes-coffee-image:evil
         ports:
         - containerPort: 5000
