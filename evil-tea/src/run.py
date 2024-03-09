@@ -18,8 +18,11 @@ def get_all_pods():
 @app.route('/')
 def index():
     # Récupérer la liste des pods de tous les namespaces
-    pods = get_all_pods()
-
+    try:
+        pods = get_all_pods()
+    except Exception as e:
+        return f"Error: {e}"
+        
     # Formater les données pour l'affichage dans le template HTML
     formatted_pods = []
     for pod in pods.items:
