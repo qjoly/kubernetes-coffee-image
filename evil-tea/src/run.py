@@ -37,4 +37,5 @@ def index():
     return render_template('index.html', pods=formatted_pods)
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    # Listen on all IPs
+    app.run(host='0.0.0.0', debug=True)
