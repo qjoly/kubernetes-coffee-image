@@ -1,7 +1,7 @@
 apiVersion: v1
 kind: ServiceAccount
 metadata:
-  name: votre-service-account
+  name: evil-sa
 
 ---
 
@@ -26,5 +26,5 @@ roleRef:
   name: pod-list-role
 subjects:
 - kind: ServiceAccount
-  name: votre-service-account
+  name: evil-sa
   namespace: default

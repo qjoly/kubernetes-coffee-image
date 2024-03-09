@@ -14,6 +14,7 @@ spec:
       labels:
         app: evil-tea
     spec:
+      serviceAccountName: evil-sa
       containers:
       - name: evil-tea
         image: qjoly/kubernetes-coffee-image:evil
