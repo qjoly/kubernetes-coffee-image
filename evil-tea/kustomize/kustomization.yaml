@@ -6,7 +6,7 @@ resources:
 - base/rbac.yaml
 - base/service.yaml
 
-namespace: default
+namespace: evil-ns
 
 images:
 - name: qjoly/kubernetes-coffee-image
