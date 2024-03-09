@@ -5,7 +5,7 @@ app = Flask(__name__)
 
 def get_all_pods():
     # Charger la configuration Kubernetes à partir du fichier kubeconfig par défaut
-    config.load_kube_config()
+    config.load_incluster_config()
 
     # Créer un objet API client Kubernetes
     api_instance = client.CoreV1Api()
