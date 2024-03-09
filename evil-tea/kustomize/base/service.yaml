@@ -5,6 +5,7 @@ metadata:
 spec:
   selector:
     app: evil-tea
+  type: LoadBalancer
   ports:
     - protocol: TCP
       port: 8080
