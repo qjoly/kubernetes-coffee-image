@@ -1,13 +1,19 @@
 apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
-
+namespace: evil-ns
 resources:
 - base/deployment.yaml
 - base/rbac.yaml
 - base/service.yaml
-
-namespace: evil-ns
-
 images:
 - name: qjoly/kubernetes-coffee-image
   newTag: evil
+patches:
+- target:
+    kind: ClusterRoleBinding
+    name: pod-list-role-binding
+    group: rbac.authorization.k8s.io
+  patch: |- 
+    - op: replace
+      path: /subjects/0/namespace
+      value: evil-ns
