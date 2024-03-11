@@ -61,7 +61,7 @@
         <footer style="padding-top: 10px">
             <div class="ip-hostname">
                 <p>IP Address:
-                    <?php echo $_SERVER['SERVER_ADDR']; ?>
+                <?php echo getenv('POD_IP') ?: $_SERVER['SERVER_ADDR']; ?>
                 </p>
                 <p>Pod:
                     <?php echo gethostname(); ?>
