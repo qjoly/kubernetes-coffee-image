@@ -1,0 +1,70 @@
+# frontend-deployment.yaml
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: frontend-deployment
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: frontend
+  template:
+    metadata:
+      labels:
+        app: frontend
+    spec:
+        containers:
+          - name: frontend
+            image: qjoly/kubernetes-coffee-image:frontend
+            ports:
+              - containerPort: 80
+            imagePullPolicy: Always
+            env:
+              - name: COFFEE_SERVER_API
+                value: "http://api:80"
+              - name: POD_IP
+                valueFrom:
+                  fieldRef:
+                    fieldPath: status.podIP
+            resources:
+              limits:
+                cpu: "0.5"
+                memory: "512Mi"
+              requests:
+                cpu: "0.1"
+                memory: "256Mi"
+            livenessProbe:
+              httpGet:
+                path: /
+                port: 80
+              initialDelaySeconds: 3
+              periodSeconds: 3
+              timeoutSeconds: 1
+              successThreshold: 1
+              failureThreshold: 3
+            readinessProbe:
+              httpGet:
+                path: /
+                port: 80
+              initialDelaySeconds: 3
+              periodSeconds: 3
+              timeoutSeconds: 1
+              successThreshold: 1
+              failureThreshold: 3
+---
+
+# frontend-service.yaml
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: frontend-service
+spec:
+  selector:
+    app: frontend
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 80
+  type: ClusterIP

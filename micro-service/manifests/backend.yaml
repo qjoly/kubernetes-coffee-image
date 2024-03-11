@@ -1,0 +1,63 @@
+# backend-deployment.yaml
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: backend-deployment
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: backend
+  template:
+    metadata:
+      labels:
+        app: backend
+    spec:
+        containers:
+          - name: backend
+            image: qjoly/kubernetes-coffee-image:api
+            imagePullPolicy: Always
+            ports:
+              - containerPort: 80
+            resources:
+              limits:
+                cpu: "0.5"
+                memory: "512Mi"
+              requests:
+                cpu: "0.1"
+                memory: "256Mi"
+            livenessProbe:
+              httpGet:
+                path: /
+                port: 80
+              initialDelaySeconds: 3
+              periodSeconds: 3
+              timeoutSeconds: 1
+              successThreshold: 1
+              failureThreshold: 3
+            readinessProbe:
+              httpGet:
+                path: /
+                port: 80
+              initialDelaySeconds: 3
+              periodSeconds: 3
+              timeoutSeconds: 1
+              successThreshold: 1
+              failureThreshold: 3
+---
+
+# backend-service.yaml
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: api
+spec:
+  selector:
+    app: backend
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 80
+  type: ClusterIP
