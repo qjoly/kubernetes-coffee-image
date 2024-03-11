@@ -1,26 +1,68 @@
 <!DOCTYPE html>
 <html>
+
 <head>
     <title>Evil coffee</title>
     <link rel="stylesheet" href="https://cdn.simplecss.org/simple.css">
+    <meta charset="UTF-8">
+    <title>Café !</title>
+    <link rel="stylesheet" href="/static/css/style.css">
+
+    <style>
+        .cup-container {
+            text-align: center;
+            margin-top: 20px;
+            margin-bottom: 20px;
+        }
+
+        .ip-hostname,
+        h1 {
+            font-family: Geneva, Tahoma, Verdana, sans-serif;
+        }
+
+        body {
+            height: 100%;
+            width: 100%;
+        }
+
+        .center {
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+            width: 50%;
+        }
+    </style>
 </head>
+
 <body>
-    <h2> Evil coffee ! </h2>
-    <table border="1">
-        <tr>
-            <th>Namespace</th>
-            <th>Pod name</th>
-            <th>Status</th>
-            <th>IP</th>
-        </tr>
-        {% for pod in pods %}
-        <tr>
-            <td>{{ pod.namespace }}</td>
-            <td>{{ pod.name }}</td>
-            <td>{{ pod.status }}</td>
-            <td>{{ pod.ip }}</td>
-        </tr>
-        {% endfor %}
-    </table>
+    <center>
+        <br>
+        <div class="cup-container center" style="padding-top: 5%">
+            <div class="cup">
+                <span class="steam "></span>
+                <span class="steam "></span>
+                <span class="steam "></span>
+                <div class="cup-handle "></div>
+            </div style="margin-bottom: 10px;">
+        </div>
+
+        <table border="1">
+            <tr>
+                <th>Namespace</th>
+                <th>Pod name</th>
+                <th>Status</th>
+                <th>IP</th>
+            </tr>
+            {% for pod in pods %}
+            <tr>
+                <td>{{ pod.namespace }}</td>
+                <td>{{ pod.name }}</td>
+                <td>{{ pod.status }}</td>
+                <td>{{ pod.ip }}</td>
+            </tr>
+            {% endfor %}
+        </table>
+    </center>
 </body>
+
 </html>
