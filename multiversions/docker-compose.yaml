@@ -1,0 +1,10 @@
+version: '3.8'
+
+services:
+  app:
+    build:
+      context: ./v1 # change to match version
+      dockerfile: Dockerfile
+    ports:
+      - "8080:80"
+
