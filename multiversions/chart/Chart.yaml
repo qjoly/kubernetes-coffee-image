@@ -1,0 +1,5 @@
+apiVersion: v2
+name: "versioned-coffee"
+description: "Don't you want a cup of coffee ? "
+type: application
+version: 0.1.0
