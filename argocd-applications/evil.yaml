@@ -1,0 +1,20 @@
+apiVersion: argoproj.io/v1alpha1                                                                                                             [210/807]
+kind: Application                                                                                                                                     
+metadata:                                                                                                                                             
+  name: evil                                                                                                                                          
+  namespace: argocd                                                                                                                                   
+spec:                                                                                                                                                 
+  destination:                                                                                                                                        
+    namespace: evil-ns                                                                                                                                
+    server: https://kubernetes.default.svc                                                                                                            
+  project: default                                                                                                                                    
+  source:                                                                                                                                             
+    path: evil-tea/kustomize                                                                                                                          
+    repoURL: https://github.com/QJoly/kubernetes-coffee-image                                                                                         
+    targetRevision: main                                                                                                                              
+  syncPolicy:                                                                                                                                         
+    automated:                                                                                                                                        
+      prune: true                                                                                                                                     
+      selfHeal: true                                                                                                                                  
+    syncOptions:                                                                                                                                      
+    - CreateNamespace=true                                                                                                                            

@@ -1,0 +1,24 @@
+apiVersion: argoproj.io/v1alpha1                                                                                                                      
+kind: Application                                                                                                                                     
+metadata:                                                                                                                                             
+  name: simple-app                                                                                                                                    
+  namespace: argocd                                                                                                                                   
+spec:                                                                                                                                                 
+  destination:                                                                                                                                        
+    namespace: simple-app                                                                                                                             
+    server: https://kubernetes.default.svc                                                                                                            
+  project: default                                                                                                                                    
+  source:                                                                                                                                             
+    helm:                                                                                                                                             
+      parameters:                                                                                                                                     
+      - name: service.type                                                                                                                            
+        value: LoadBalancer                                                                                                                           
+    path: simple/chart                                                                                                                                
+    repoURL: https://github.com/QJoly/kubernetes-coffee-image                                                                                         
+    targetRevision: main                                                                                                                              
+  syncPolicy:                                                                                                                                         
+    automated:                                                                                                                                        
+      prune: true                                                                                                                                     
+      selfHeal: true                                                                                                                                  
+    syncOptions:                                                                                                                                      
+    - CreateNamespace=true                                                                                                                            

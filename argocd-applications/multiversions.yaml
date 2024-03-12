@@ -1,0 +1,21 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: versioned-coffee
+  namespace: argocd
+spec:
+  destination:
+    namespace: versioned-coffee
+    server: https://kubernetes.default.svc
+  project: default
+  source:
+    helm:
+      parameters:
+      - name: service.type
+        value: NodePort
+    path: multiversions/chart
+    repoURL: https://github.com/QJoly/kubernetes-coffee-image
+    targetRevision: main
+  syncPolicy:
+    syncOptions:
+    - CreateNamespace=true
