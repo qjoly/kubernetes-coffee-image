@@ -1,20 +1,20 @@
 apiVersion: argoproj.io/v1alpha1
-kind: Application                                                                                                                                     
-metadata:                                                                                                                                             
-  name: simple-app-helm-registry                                                                                                                                   
-  namespace: argocd                                                                                                                                   
-spec:                                                                                                                                                 
-  destination:                                                                                                                                        
-    namespace: simple-app-helm-registry                                                                                                                            
-    server: https://kubernetes.default.svc                                                                                                            
-  project: default                                                                                                                                    
-  source:                                                                                                                                             
-    chart: simple-coffee                                                                                                                              
-    repoURL: https://rubxkube.github.io/charts/                                                                                                       
-    targetRevision: 0.1.0                                                                                                                             
-  syncPolicy:                                                                                                                                         
-    automated:                                                                                                                                        
-      prune: true                                                                                                                                     
-      selfHeal: true                                                                                                                                  
-    syncOptions:                                                                                                                                      
-    - CreateNamespace=true
+kind: Application
+metadata:
+  name: simple-app-helm-registry
+  namespace: argocd
+spec:
+  destination:
+    namespace: simple-app-helm-registry
+    server: https://kubernetes.default.svc
+  project: default
+  source:
+    chart: simple-coffee
+    repoURL: https://rubxkube.github.io/charts/
+    targetRevision: 0.1.0
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+    syncOptions:
+      - CreateNamespace=true

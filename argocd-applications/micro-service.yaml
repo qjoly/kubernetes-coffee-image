@@ -1,18 +1,18 @@
 apiVersion: argoproj.io/v1alpha1
-kind: Application                                                                                                                                     
-metadata:                                                                                                                                             
-  name: micro-services                                                                                                                                
-  namespace: argocd                                                                                                                                   
-spec:                                                                                                                                                 
-  destination:                                                                                                                                        
-    namespace: micro-service                                                                                                                          
-    server: https://kubernetes.default.svc                                                                                                            
-  project: default                                                                                                                                    
-  source:                                                                                                                                             
-    path: micro-service/manifests                                                                                                                     
-    repoURL: https://github.com/QJoly/kubernetes-coffee-image                                                                                         
-    targetRevision: HEAD                                                                                                                              
-  syncPolicy:                                                                                                                                         
-    automated: {}                                                                                                                                     
-    syncOptions:                                                                                                                                      
-    - CreateNamespace=true                                                                                                                            
+kind: Application
+metadata:
+  name: micro-services
+  namespace: argocd
+spec:
+  destination:
+    namespace: micro-service
+    server: https://kubernetes.default.svc
+  project: default
+  source:
+    path: micro-service/manifests
+    repoURL: https://github.com/QJoly/kubernetes-coffee-image
+    targetRevision: HEAD
+  syncPolicy:
+    automated: {}
+    syncOptions:
+      - CreateNamespace=true

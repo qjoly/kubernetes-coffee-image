@@ -11,11 +11,11 @@ spec:
   source:
     helm:
       parameters:
-      - name: service.type
-        value: NodePort
+        - name: service.type
+          value: NodePort
     path: multiversions/chart
     repoURL: https://github.com/QJoly/kubernetes-coffee-image
     targetRevision: main
   syncPolicy:
     syncOptions:
-    - CreateNamespace=true
+      - CreateNamespace=true
