@@ -28,16 +28,16 @@ jobs:
           - Dockerfile: evil-tea/Dockerfile
             context: evil-tea
             tag: evil
-          - Dockerfile: multiversions/v1/Dockerfile
+          - Dockerfile: multiversions/Dockerfile
             context: multiversions/v1
             tag: v1
-          - Dockerfile: multiversions/v1/Dockerfile
+          - Dockerfile: multiversions/Dockerfile
             context: multiversions/v2
             tag: v2
-          - Dockerfile: multiversions/v1/Dockerfile
+          - Dockerfile: multiversions/Dockerfile
             context: multiversions/v3
             tag: v3
-          - Dockerfile: multiversions/v1/Dockerfile
+          - Dockerfile: multiversions/Dockerfile
             context: multiversions/v4
             tag: v4
     steps:
