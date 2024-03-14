@@ -27,3 +27,4 @@ roleRef:
 subjects:
 - kind: ServiceAccount
   name: evil-sa
+  namespace: evil-ns
