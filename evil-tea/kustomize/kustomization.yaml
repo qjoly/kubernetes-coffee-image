@@ -15,4 +15,4 @@ patches:
   patch: |- 
     - op: replace
       path: /subjects/0/namespace
-      value: ${ARGOCD_APP_NAMESPACE}
+      value: evil-ns
