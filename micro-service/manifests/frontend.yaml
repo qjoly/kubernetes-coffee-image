@@ -59,8 +59,6 @@ spec:
               failureThreshold: 3
 ---
 
-# frontend-service.yaml
-
 apiVersion: v1
 kind: Service
 metadata:
@@ -71,6 +69,7 @@ metadata:
 spec:
   selector:
     app: frontend
+    version: v1
   ports:
     - name: http
       protocol: TCP

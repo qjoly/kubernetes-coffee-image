@@ -47,7 +47,12 @@
         <?php
         $api_url = $_ENV["COFFEE_SERVER_API"];
 
-        $response = file_get_contents($api_url);
+        $ch = curl_init($api_url);
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+        curl_setopt($ch, CURLOPT_HTTP_VERSION, CURL_HTTP_VERSION_1_1);
+        $response = curl_exec($ch);
+        curl_close($ch);
+
         $json_data = json_decode($response, true);
 
         if (isset($json_data['number'])) {

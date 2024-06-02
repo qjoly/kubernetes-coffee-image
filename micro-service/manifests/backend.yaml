@@ -75,6 +75,6 @@ spec:
 apiVersion: v1
 kind: ServiceAccount
 metadata:
-  name: api-coffee
+  name: api
   labels:
-    account: api-coffee
+    account: api
