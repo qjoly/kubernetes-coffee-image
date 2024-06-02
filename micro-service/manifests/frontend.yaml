@@ -3,22 +3,27 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: frontend-deployment
+  name: frontend
 spec:
   replicas: 3
   selector:
     matchLabels:
       app: frontend
+      version: v1
   template:
     metadata:
       labels:
         app: frontend
+        version: v1
     spec:
+        serviceAccount: frontend
+        serviceAccountName: frontend
         containers:
           - name: frontend
             image: qjoly/kubernetes-coffee-image:frontend
             ports:
-              - containerPort: 80
+              - name: http
+                containerPort: 80
             imagePullPolicy: Always
             env:
               - name: COFFEE_SERVER_API
@@ -37,7 +42,7 @@ spec:
             livenessProbe:
               httpGet:
                 path: /
-                port: 80
+                port: http
               initialDelaySeconds: 3
               periodSeconds: 3
               timeoutSeconds: 1
@@ -46,7 +51,7 @@ spec:
             readinessProbe:
               httpGet:
                 path: /
-                port: 80
+                port: http
               initialDelaySeconds: 3
               periodSeconds: 3
               timeoutSeconds: 1
@@ -59,7 +64,10 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-  name: frontend-service
+  name: frontend
+  labels:
+    app: frontend
+    version: v1
 spec:
   selector:
     app: frontend
@@ -69,3 +77,11 @@ spec:
       port: 80
       targetPort: 80
   type: ClusterIP
+---
+
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  name: frontend
+  labels:
+    account: frontend
