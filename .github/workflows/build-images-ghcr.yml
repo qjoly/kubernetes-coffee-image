@@ -2,6 +2,8 @@ name: Build Docker Images for GHCR
 
 on:
   push:
+    branches:
+      - main
 
 env:
   REGISTRY: ghcr.io
@@ -44,13 +46,12 @@ jobs:
       - name: Set up Docker Buildx
         uses: docker/setup-buildx-action@f95db51fddba0c2d1ec667646a06c2ce06100226 # v3.0.0
 
-      - name: Log into registry ${{ env.REGISTRY }}
-        if: github.event_name != 'pull_request'
-        uses: docker/login-action@343f7c4344506bcbf9b4de18042ae17996df046d # v3.0.0
+      - name: Login to GitHub Container Registry
+        uses: docker/login-action@v1
         with:
           registry: ${{ env.REGISTRY }}
-          username: ${{ github.actor }}
-          password: ${{ secrets.GITHUB_TOKEN }}
+          username: ${{ github.repository_owner }}
+          password: ${{ secrets.GHCR_PAT }}  # Use the new secret here
 
       - name: Checkout code
         uses: actions/checkout@v2
