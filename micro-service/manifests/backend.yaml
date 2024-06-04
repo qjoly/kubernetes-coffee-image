@@ -16,8 +16,8 @@ spec:
         app: api
         version: v1
     spec:
-        serviceAccount: api-coffee
-        serviceAccountName: api-coffee
+        serviceAccount: api
+        serviceAccountName: api
         containers:
           - name: api
             image: qjoly/kubernetes-coffee-image:api
