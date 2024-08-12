@@ -54,7 +54,7 @@ jobs:
           password: ${{ secrets.GHCR_PAT }}  # Use the new secret here
 
       - name: Checkout code
-        uses: actions/checkout@v2
+        uses: actions/checkout@v4
 
       - name: set repository name to lowercase
         run: |
