@@ -3,7 +3,7 @@ replicaCount: 1
 image:
   repository: qjoly/kubernetes-coffee-image
   pullPolicy: IfNotPresent
-  tag: "v1"
+  tag: "v4"
 
 imagePullSecrets: []
 nameOverride: ""
