@@ -71,6 +71,9 @@
                 <p>Pod:
                     <?php echo gethostname(); ?>
                 </p>
+                <p>Backend:
+                    <?php echo getenv('COFFEE_SERVER_API'); ?>
+                </p>
             </div>
         </footer>
     </center>
