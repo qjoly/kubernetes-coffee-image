@@ -65,6 +65,13 @@
 
         <footer style="padding-top: 10px">
             <div class="ip-hostname">
+
+                <?php 
+                if (isset($json_data['hostname'])) {
+                    echo "<i>Response from : " . $json_data['hostname'] . "</i>";
+                }
+                ?>
+
                 <p>IP Address:
                 <?php echo getenv('POD_IP') ?: $_SERVER['SERVER_ADDR']; ?>
                 </p>
