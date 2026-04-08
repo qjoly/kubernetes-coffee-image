@@ -49,7 +49,7 @@ jobs:
           password: ${{ secrets.DOCKERHUB_PASS }}
 
       - name: Checkout code
-        uses: actions/checkout@v4
+        uses: actions/checkout@v6
 
       - name: set repository name to lowercase
         run: |
